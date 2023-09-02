@@ -1,0 +1,29 @@
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        Arrays.sort(intervals,(a,b)->a[0]-b[0]);
+        int i=0;
+
+        List<int[]> reslist=new ArrayList<>();
+        while(i<intervals.length){
+            int newStart=intervals[i][0];
+            int currEnd=intervals[i][1];
+
+            while(i<intervals.length-1 && currEnd>=intervals[i+1][0]){
+                currEnd=Math.max(currEnd,intervals[i+1][1]);
+                    i++;
+                }
+                int newEnd=currEnd;
+                reslist.add(new int[]{newStart,newEnd});
+                i++;
+        }
+        int index=0;
+        int[][] res=new int[reslist.size()][2];
+
+        for(int[] arr : reslist){
+            res[index]=arr;
+            index++;
+        }
+        
+        return res;
+    }
+}
