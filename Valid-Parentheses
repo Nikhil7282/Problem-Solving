@@ -17,6 +17,9 @@ class Solution {
             else if(!stack.isEmpty() && s.charAt(i)==']' && stack.peek()=='['){
                 stack.pop();
             }
+            else{
+                return false;
+            }
         }
 
         return stack.isEmpty();
