@@ -1,3 +1,5 @@
+
+//Char Array  all 26 characters
 class Solution {
     public boolean isAnagram(String s, String t) {
         if(s.length() != t.length()){
