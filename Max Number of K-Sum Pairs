@@ -1,0 +1,24 @@
+class Solution {
+    public int maxOperations(int[] nums, int k) {
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int ans=0;
+
+        for(int num:nums){
+            int bal=k-num;
+            if(map.containsKey(bal)){
+                ans++;
+                if(map.get(bal)==1){
+                    map.remove(bal);
+                }
+                else{
+                   map.put(bal,map.get(bal)-1); 
+                }
+            }
+            else{
+                map.put(num,map.getOrDefault(num,0)+1);
+                // map.put(num,1);
+            }
+        }
+        return ans;
+    }
+}
