@@ -1,0 +1,35 @@
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var rotate = function(nums, k) {
+
+    if(nums.length<=1 ||nums.length ==null||nums.length==k){
+        return 
+    }
+    if(k>nums.length){
+        k=k%nums.length;
+    }
+    
+    let left=0;
+    let right=nums.length -1-k;
+    let nextLeft=right+1;
+    let nextRight=nums.length-1;
+
+    while(left<=right){
+        let temp=nums[left];
+        nums[left]=nums[right];
+        nums[right]=temp;
+        left++;
+        right--;
+    }
+    while(nextLeft<=nextRight){
+        let temp=nums[nextLeft];
+        nums[nextLeft]=nums[nextRight];
+        nums[nextRight]=temp;
+        nextLeft++;
+        nextRight--;
+    }
+    nums.reverse()
+};
