@@ -1,0 +1,21 @@
+var generate = function(numRows) {
+    let res=[];
+    if(numRows>=1) res.push([1])
+    if(numRows>=2) res.push([1,1])
+    if(numRows>=3) res.push([1,2,1])
+
+    let prevArray=res[2]
+    for(let i=3;i<numRows;i++){
+        let left=0;
+        let right=1;
+        let add=[]
+        while(right<prevArray.length){
+            add.push(prevArray[left]+prevArray[right])
+            left++;
+            right++
+        }
+        res.push([1,...add,1])
+        prevArray=[1,...add,1]
+    }
+    return res;
+};
