@@ -1,18 +1,20 @@
-public class Solution {
-    public int maxArea(int[] height) {
-        int maxArea=0;
-        int a=0;
-        int b=height.length-1;
-        while(a<b){
-            if(height[a] < height[b]){
-                maxArea=Math.max(maxArea,height[a]*(b-a));
-                a+=1;
-            }
-            else{
-               maxArea=Math.max(maxArea,height[b]*(b-a));
-                b-=1; 
-            }
+
+var maxArea = function(h) {
+    let left=0;
+    let right=h.length-1
+    let maxi=0
+
+    while(left<right){
+        let width=right-left
+        let maxArea=Math.min(h[left],h[right])*width
+        maxi=Math.max(maxi,maxArea)
+
+        if(h[left]<=h[right]){
+            left++;
         }
-        return maxArea;
+        else{
+            right--;
+        }
     }
-}
+    return maxi
+};
